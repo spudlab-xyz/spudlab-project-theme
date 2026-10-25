@@ -1,0 +1,6 @@
+<article class="card">
+  {{ with .Params.icon }}<div class="card-icon">{{ partial "icon.html" . }}</div>{{ end }}
+  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  <p>{{ .Description | default .Summary | plainify | truncate 180 }}</p>
+  <a class="card-link" href="{{ .RelPermalink }}">{{ i18n "readMore" }}<span aria-hidden="true"> →</span><span class="sr-only">: {{ .LinkTitle }}</span></a>
+</article>

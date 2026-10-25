@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="{{ site.Params.colors.dark | default "#373b3e" }}">
+{{ hugo.Generator }}
+{{ $description := .Description | default .Summary | default site.Params.description | default site.Title }}
+<title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ site.Title }}</title>
+<meta name="description" content="{{ $description | plainify | htmlEscape }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+<meta property="og:title" content="{{ .Title | default site.Title }}">
+<meta property="og:description" content="{{ $description | plainify | htmlEscape }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ with .Params.image | default site.Params.socialImage }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+<meta name="twitter:card" content="summary_large_image">
+{{ if .IsHome }}<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":{{ site.Title | jsonify | safeJS }},"description":{{ $description | plainify | jsonify | safeJS }},"url":{{ .Permalink | jsonify | safeJS }}}</script>{{ end }}
+{{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">{{ end }}
+{{ with site.Params.favicon }}<link rel="icon" href="{{ . | relURL }}">{{ end }}
+<script>
+  document.documentElement.classList.add('js');
+  try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'auto'; } catch (_) {}
+</script>
+<style>
+  :root {
+    --brand-dark: {{ site.Params.colors.dark | default "#373b3e" }};
+    --brand-neutral: {{ site.Params.colors.neutral | default "#bec8d1" }};
+    --brand-accent: {{ site.Params.colors.accent | default "#86cecb" }};
+    --brand-support: {{ site.Params.colors.support | default "#137a7f" }};
+    --brand-emphasis: {{ site.Params.colors.emphasis | default "#e12885" }};
+  }
+</style>
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ range site.Params.customCSS }}<link rel="stylesheet" href="{{ . | relURL }}">{{ end }}

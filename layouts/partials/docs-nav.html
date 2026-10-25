@@ -1,0 +1,12 @@
+{{- $current := .current -}}
+{{- $pages := .root.Pages.ByWeight -}}
+<ul class="docs-nav-list">
+  {{- range $pages }}
+    <li>
+      <a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $current.RelPermalink }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a>
+      {{- if and .IsSection .Pages }}
+        {{ partial "docs-nav.html" (dict "current" $current "root" .) }}
+      {{- end }}
+    </li>
+  {{- end }}
+</ul>

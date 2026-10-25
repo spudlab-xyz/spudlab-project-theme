@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-brand" href="{{ site.Home.RelPermalink }}">{{ site.Params.brandName | default site.Title }}</a>
+      {{ with site.Params.footer.description }}<p>{{ . }}</p>{{ end }}
+    </div>
+    {{ with site.Menus.footer }}
+      <nav aria-label="Footer navigation">
+        <ul class="footer-links">{{ range . }}<li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>{{ end }}</ul>
+      </nav>
+    {{ end }}
+    {{ with site.Params.links }}
+      <ul class="social-links" aria-label="Social links">
+        {{ range . }}<li><a href="{{ .url }}" rel="me noopener">{{ .name }}</a></li>{{ end }}
+      </ul>
+    {{ end }}
+  </div>
+  <div class="container footer-meta">
+    <span>&copy; {{ now.Year }} {{ site.Params.copyright | default site.Title }}</span>
+    {{ with site.Params.footer.license }}<span>{{ . | markdownify }}</span>{{ end }}
+  </div>
+</footer>

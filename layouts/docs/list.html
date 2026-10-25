@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <header class="page-header docs-header"><div class="container">
+    {{ partial "breadcrumbs.html" . }}
+    <p class="eyebrow">{{ i18n "documentation" }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+  </div></header>
+  <div class="container docs-layout">
+    <aside class="docs-sidebar" aria-label="{{ i18n "documentationNavigation" }}">
+      <p class="docs-sidebar-title"><a href="{{ .FirstSection.RelPermalink }}">{{ .FirstSection.LinkTitle }}</a></p>
+      {{ partial "docs-nav.html" (dict "current" . "root" .FirstSection) }}
+    </aside>
+    <article class="docs-main">
+      {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+      {{ with .Pages }}<div class="docs-card-grid">{{ range .ByWeight }}{{ partial "page-card.html" . }}{{ end }}</div>{{ end }}
+    </article>
+  </div>
+{{ end }}

@@ -1,0 +1,60 @@
+baseURL: https://example.org/
+languageCode: en-gb
+title: Canopy
+theme: spudlab-project-theme
+enableRobotsTXT: true
+
+menus:
+  main:
+    - name: Features
+      url: /#features-title
+      weight: 10
+    - name: Documentation
+      pageRef: /docs
+      weight: 20
+    - name: About
+      pageRef: /about
+      weight: 30
+  footer:
+    - name: Documentation
+      pageRef: /docs
+      weight: 10
+    - name: Report an issue
+      url: https://github.com/spudlab-xyz/spudlab-project-theme/issues
+      weight: 20
+
+params:
+  brandName: Canopy
+  description: A friendly example project for collecting environmental observations in the field.
+  author: Spudlab
+  logo: images/canopy-mark.svg
+  favicon: images/canopy-mark.svg
+  socialImage: images/canopy-mark.svg
+  dateFormat: 2 January 2006
+  showTableOfContents: true
+  themeToggle: true
+  copyright: Spudlab
+
+  madeBy:
+    label: Made by
+    name: Spudlab
+    url: https://spudlab.xyz/
+
+  headerAction:
+    label: View source
+    url: https://github.com/spudlab-xyz/spudlab-project-theme
+
+  colors:
+    dark: "#373b3e"
+    neutral: "#bec8d1"
+    accent: "#86cecb"
+    support: "#137a7f"
+    emphasis: "#e12885"
+
+  footer:
+    description: Canopy is a fictional project used to demonstrate the Spudlab Project theme.
+    license: Example content is available under CC BY 4.0.
+
+  links:
+    - name: GitHub
+      url: https://github.com/spudlab-xyz/spudlab-project-theme

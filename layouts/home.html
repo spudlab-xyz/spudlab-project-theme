@@ -1,0 +1,56 @@
+{{ define "main" }}
+  <section class="hero project-hero">
+    <div class="container hero-grid hero-grid-single">
+      <div class="hero-copy">
+        {{ with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h1>{{ .Params.heroTitle | default site.Title }}</h1>
+        {{ with .Params.heroText | default site.Params.description }}<p class="hero-lead">{{ . }}</p>{{ end }}
+        {{ with .Params.actions }}
+          <div class="actions">
+            {{ range $index, $action := . }}<a class="button{{ if gt $index 0 }} button-secondary{{ end }}" href="{{ $action.url | relURL }}">{{ $action.label }}</a>{{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ with .Params.features }}
+    <section class="section" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>{{ with $.Params.featuresEyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}<h2 id="features-title">{{ $.Params.featuresTitle | default "Built for the work" }}</h2></div>
+          {{ with $.Params.featuresIntro }}<p>{{ . }}</p>{{ end }}
+        </div>
+        <div class="feature-grid">
+          {{ range $index, $feature := . }}
+            <article class="feature">
+              {{ with $feature.icon }}<div class="feature-icon">{{ partial "icon.html" . }}</div>{{ else }}<span class="feature-number" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>{{ end }}
+              <h3>{{ $feature.title }}</h3><p>{{ $feature.text }}</p>
+              {{ with $feature.url }}<a href="{{ . | relURL }}">{{ $feature.linkLabel | default (i18n "learnMore") }} <span aria-hidden="true">→</span></a>{{ end }}
+            </article>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ with .Params.steps }}
+    <section class="section section-tinted" aria-labelledby="steps-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>{{ with $.Params.stepsEyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}<h2 id="steps-title">{{ $.Params.stepsTitle | default "Get started" }}</h2></div>
+          {{ with $.Params.stepsIntro }}<p>{{ . }}</p>{{ end }}
+        </div>
+        <ol class="steps">
+          {{ range . }}<li><span class="step-number" aria-hidden="true"></span><div><h3>{{ .title }}</h3><p>{{ .text }}</p>{{ with .url }}<a href="{{ . | relURL }}">{{ i18n "learnMore" }} <span aria-hidden="true">→</span></a>{{ end }}</div></li>{{ end }}
+        </ol>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ with .Content }}<section class="section"><div class="container narrow prose home-content">{{ . }}</div></section>{{ end }}
+
+  {{ with .Params.cta }}
+    <section class="section cta-section"><div class="container"><div class="cta-box"><div><p class="eyebrow">{{ .eyebrow | default "Ready to begin?" }}</p><h2>{{ .title }}</h2>{{ with .text }}<p>{{ . }}</p>{{ end }}</div>{{ with .action }}<a class="button" href="{{ .url | relURL }}">{{ .label }}</a>{{ end }}</div></div></section>
+  {{ end }}
+{{ end }}

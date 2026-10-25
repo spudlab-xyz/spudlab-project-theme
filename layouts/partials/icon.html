@@ -1,0 +1,3 @@
+{{- $name := . | lower -}}
+{{- $sprite := "icons/lucide.svg" | relURL -}}
+<svg aria-hidden="true" viewBox="0 0 24 24"><use href="{{ $sprite }}#{{ $name }}"></use></svg>

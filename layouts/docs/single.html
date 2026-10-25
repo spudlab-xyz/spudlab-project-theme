@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <header class="page-header docs-header"><div class="container">
+    {{ partial "breadcrumbs.html" . }}
+    <p class="eyebrow">{{ i18n "documentation" }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+  </div></header>
+  <div class="container docs-layout">
+    <aside class="docs-sidebar" aria-label="{{ i18n "documentationNavigation" }}">
+      <p class="docs-sidebar-title"><a href="{{ .FirstSection.RelPermalink }}">{{ .FirstSection.LinkTitle }}</a></p>
+      {{ partial "docs-nav.html" (dict "current" . "root" .FirstSection) }}
+    </aside>
+    <article class="docs-main">
+      <div class="prose">{{ .Content }}</div>
+      <nav class="docs-pagination" aria-label="{{ i18n "documentationPagination" }}">
+        <div>{{ with .NextInSection }}<span>{{ i18n "previous" }}</span><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</div>
+        <div class="docs-pagination-next">{{ with .PrevInSection }}<span>{{ i18n "next" }}</span><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</div>
+      </nav>
+    </article>
+    {{ if and (ne site.Params.showTableOfContents false) (gt (len .TableOfContents) 32) }}<aside class="toc docs-toc" aria-labelledby="toc-title"><h2 id="toc-title">{{ i18n "onThisPage" }}</h2>{{ .TableOfContents }}</aside>{{ end }}
+  </div>
+{{ end }}

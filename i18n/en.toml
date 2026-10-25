@@ -1,0 +1,66 @@
+[skipToContent]
+other = "Skip to content"
+
+[menu]
+other = "Menu"
+
+[theme]
+other = "Change colour theme"
+
+[readMore]
+other = "Read more"
+
+[latest]
+other = "Latest"
+
+[allPosts]
+other = "View all"
+
+[published]
+other = "Published"
+
+[updated]
+other = "Updated"
+
+[minuteRead]
+one = "One minute read"
+other = "{{ .Count }} minute read"
+
+[tagged]
+other = "Tagged"
+
+[pageNotFound]
+other = "Page not found"
+
+[pageNotFoundText]
+other = "The page you were looking for may have moved or no longer exists."
+
+[backHome]
+other = "Return home"
+
+[previous]
+other = "Previous"
+
+[next]
+other = "Next"
+
+[onThisPage]
+other = "On this page"
+
+[rssFeed]
+other = "RSS feed"
+
+[home]
+other = "Home"
+
+[documentation]
+other = "Documentation"
+
+[documentationNavigation]
+other = "Documentation navigation"
+
+[documentationPagination]
+other = "Documentation pages"
+
+[learnMore]
+other = "Learn more"

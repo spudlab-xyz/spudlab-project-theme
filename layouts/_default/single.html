@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <article>
+    <header class="page-header article-header"><div class="container narrow">
+      {{ partial "breadcrumbs.html" . }}
+      <h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+      {{ if and (not .Lastmod.IsZero) (ne .Lastmod .Date) }}<p class="article-meta">{{ i18n "updated" }} <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format (site.Params.dateFormat | default "2 January 2006") }}</time></p>{{ end }}
+    </div></header>
+    <div class="container article-layout"><div class="prose article-content">{{ .Content }}</div>
+      {{ if and (ne site.Params.showTableOfContents false) (gt (len .TableOfContents) 32) }}<aside class="toc" aria-labelledby="toc-title"><h2 id="toc-title">{{ i18n "onThisPage" }}</h2>{{ .TableOfContents }}</aside>{{ end }}
+    </div>
+  </article>
+{{ end }}

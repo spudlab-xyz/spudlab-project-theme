@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Canopy">
+  <rect width="64" height="64" rx="10" fill="#373b3e"/>
+  <path d="M15 39c0-14 9-23 28-24-1 18-10 27-24 27" fill="none" stroke="#86cecb" stroke-width="6" stroke-linecap="round"/>
+  <path d="M20 47c5-10 12-17 23-25" fill="none" stroke="#e12885" stroke-width="4" stroke-linecap="round"/>
+</svg>

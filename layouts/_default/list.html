@@ -1,0 +1,8 @@
+{{ define "main" }}
+  <header class="page-header"><div class="container narrow">
+    {{ with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>{{ with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="prose intro-content">{{ . }}</div>{{ end }}
+  </div></header>
+  {{ with .Pages }}<section class="section section-list"><div class="container"><div class="card-grid">{{ range .ByWeight }}{{ partial "page-card.html" . }}{{ end }}</div></div></section>{{ end }}
+{{ end }}
